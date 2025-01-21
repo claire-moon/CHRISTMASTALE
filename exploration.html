@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exploration</title>
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #000;
+            position: relative;
+        }
+        .container {
+            position: relative;
+        }
+        .image {
+            width: 100%;
+            max-width: 640px;
+            height: auto;
+        }
+        .hotspot {
+            position: absolute;
+            cursor: pointer;
+        }
+        .tooltip {
+            position: absolute;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: #fff;
+            padding: 5px;
+            border-radius: 3px;
+            display: none;
+            pointer-events: none;
+            z-index: 1000;
+        }
+        #coordinates {
+            position: fixed;
+            bottom: 10px;
+            left: 10px;
+            color: white;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!--put your image information here-->
+        <img src="images/01.bmp" alt="the mountains" class="image" id="explorationImage">
+        <div class="hotspot" style="top: 270px; left: 182px; width: 100px; height: 100px;" data-tooltip="There's a path up the hill..." data-link="exploration02.html"></div>
+        <div class="tooltip" id="tooltip"></div>
+    </div>
+    <div id="coordinates"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const hotspots = document.querySelectorAll('.hotspot');
+            const tooltip = document.getElementById('tooltip');
+            const coordinates = document.getElementById('coordinates');
+            const image = document.getElementById('explorationImage');
+
+            hotspots.forEach(hotspot => {
+                hotspot.addEventListener('mouseover', (e) => {
+                    const tooltipText = e.target.getAttribute('data-tooltip');
+                    if (tooltipText) {
+                        tooltip.innerText = tooltipText;
+                        tooltip.style.display = 'block';
+                    }
+                });
+
+                hotspot.addEventListener('mousemove', (e) => {
+                    const rect = image.getBoundingClientRect();
+                    tooltip.style.left = `${e.clientX - rect.left + 10}px`;
+                    tooltip.style.top = `${e.clientY - rect.top + 10}px`;
+                });
+
+                hotspot.addEventListener('mouseout', () => {
+                    tooltip.style.display = 'none';
+                });
+
+                hotspot.addEventListener('click', () => {
+                    const link = hotspot.getAttribute('data-link');
+                    if (link) {
+                        window.location.href = link;
+                    }
+                });
+            });
+
+            let debugMode = false;
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'x') {
+                    debugMode = true;
+                    coordinates.style.display = 'block';
+                }
+            });
+
+            document.addEventListener('keyup', (e) => {
+                if (e.key === 'x') {
+                    debugMode = false;
+                    coordinates.style.display = 'none';
+                }
+            });
+
+            image.addEventListener('mousemove', (e) => {
+                if (debugMode) {
+                    const rect = image.getBoundingClientRect();
+                    const x = Math.round((e.clientX - rect.left) / rect.width * 640);
+                    const y = Math.round((e.clientY - rect.top) / rect.height * 480);
+                    coordinates.innerText = `X: ${x}, Y: ${y}`;
+                }
+            });
+
+            // full screen that doesnt fucking work
+            if (document.documentElement.requestFullscreen) {
+                document.documentElement.requestFullscreen();
+            } else if (document.documentElement.mozRequestFullScreen) { 
+                document.documentElement.mozRequestFullScreen();
+            } else if (document.documentElement.webkitRequestFullscreen) { 
+                document.documentElement.webkitRequestFullscreen();
+            } else if (document.documentElement.msRequestFullscreen) { 
+                document.documentElement.msRequestFullscreen();
+            }
+        });
+    </script>
+</body>
+</html>
