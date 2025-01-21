@@ -35,6 +35,8 @@
             display: none;
             pointer-events: none;
             z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.5s;
         }
         #coordinates {
             position: fixed;
@@ -61,12 +63,28 @@
             const coordinates = document.getElementById('coordinates');
             const image = document.getElementById('explorationImage');
 
+            function typeWriter(text, element, callback) {
+                let i = 0;
+                element.innerHTML = '';
+                function type() {
+                    if (i < text.length) {
+                        element.innerHTML += text.charAt(i);
+                        i++;
+                        setTimeout(type, 50);
+                    } else if (callback) {
+                        callback();
+                    }
+                }
+                type();
+            }
+
             hotspots.forEach(hotspot => {
                 hotspot.addEventListener('mouseover', (e) => {
                     const tooltipText = e.target.getAttribute('data-tooltip');
                     if (tooltipText) {
-                        tooltip.innerText = tooltipText;
                         tooltip.style.display = 'block';
+                        tooltip.style.opacity = 1;
+                        typeWriter(tooltipText, tooltip);
                     }
                 });
 
@@ -77,7 +95,10 @@
                 });
 
                 hotspot.addEventListener('mouseout', () => {
-                    tooltip.style.display = 'none';
+                    tooltip.style.opacity = 0;
+                    setTimeout(() => {
+                        tooltip.style.display = 'none';
+                    }, 500);
                 });
 
                 hotspot.addEventListener('click', () => {
