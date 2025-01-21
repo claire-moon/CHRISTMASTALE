@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-NPCS Terminal</title>
+    <style>
+        @font-face {
+            font-family: 'Alagard';
+            src: url('fonts/alagard.ttf') format('truetype');
+        }
+        body {
+            background-color: #191970; 
+            color: #fff; 
+            font-family: 'Alagard', monospace;
+            margin: 0;
+            padding: 0;
+        }
+        #terminal {
+            width: 100%;
+            height: calc(100vh - 60px);
+            padding: 10px;
+            box-sizing: border-box;
+            overflow-y: auto;
+            font-size: calc(10px + 1vw);
+            display: flex;
+            flex-direction: column;
+        }
+        #input-container {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            background-color: #191970; 
+        }
+        #input {
+            width: 100%;
+            height: 30px;
+            border: 1px solid #fff;
+            background: none;
+            color: #fff; 
+            font-family: 'Alagard', monospace;
+            font-size: calc(10px + 1vw);
+            outline: none;
+            caret-color: transparent; 
+        }
+        @keyframes blink {
+            0% { background-color: transparent; }
+            50% { background-color: #fff; }
+            100% { background-color: transparent; }
+        }
+        #input::after {
+            content: ' ';
+            display: inline-block;
+            width: 10px;
+            height: 1em;
+            background-color: #fff; 
+            animation: blink 1s step-end infinite;
+            vertical-align: bottom;
+        }
+    </style>
+</head>
+<body>
+    <div id="terminal"></div>
+    <div id="input-container">
+        <input type="text" id="input" autofocus>
+    </div>
+    <script>
+        const terminal = document.getElementById('terminal');
+        const input = document.getElementById('input');
+
+        function printToTerminal(text) {
+            const line = document.createElement('div');
+            line.textContent = text;
+            terminal.appendChild(line);
+            terminal.scrollTop = terminal.scrollHeight;
+        }
+
+        async function loadSetupProgram() {
+            try {
+                const response = await fetch('ENPCS/setup.html');
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const setupHtml = await response.text();
+                const setupDiv = document.createElement('div');
+                setupDiv.innerHTML = setupHtml;
+                terminal.appendChild(setupDiv);
+                terminal.scrollTop = terminal.scrollHeight;
+            } catch (error) {
+                printToTerminal('Failed to load setup program: ' + error.message);
+            }
+        }
+
+        input.addEventListener('keydown', function(event) {
+            console.log('Key pressed:', event.key);
+            if (event.key === 'Enter') {
+                const command = input.value;
+                console.log('Command entered:', command); 
+                input.value = '';
+                printToTerminal('> ' + command);
+                if (command === 'ZPole') {
+                    window.location.href = 'ENPCS/ZPole.html';
+                } else if (command === 'setup') {
+                    loadSetupProgram();
+                } else if (command === 'boot') {
+                    if (!localStorage.getItem('bootRun')) {
+                        localStorage.setItem('bootRun', 'true');
+                        window.location.href = 'ENPCS/BOOT.html';
+                    } else {
+                        printToTerminal('BOOT sequence has already been run.');
+                    }
+                } else {
+                    printToTerminal('Unknown command: ' + command);
+                }
+            }
+        });
+
+        document.addEventListener('click', () => {
+            input.focus();
+        });
+
+        window.addEventListener('load', () => {
+            if (!localStorage.getItem('bootRun')) {
+                printToTerminal('BOOT sequence initiated');
+                localStorage.setItem('bootRun', 'true');
+                window.location.href = 'ENPCS/BOOT.html';
+            } else {
+                printToTerminal('BOOT sequence has already been run.');
+            }
+        });
+
+        printToTerminal('Welcome to the E-NPCS Terminal');
+        printToTerminal('Type "ZPole" to start the Z-machine interpreter');
+        printToTerminal('Type "setup" to start the setup program');
+        printToTerminal('Type "boot" to run the boot sequence');
+    </script>
+</body>
+</html>
