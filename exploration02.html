@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>exploration demo</title>
     <style>
+        @font-face {
+            font-family: 'Jebone';
+            src: url('fonts/jebone.ttf') format('truetype');
+        }
         body {
             margin: 0;
             display: flex;
@@ -35,38 +39,47 @@
             display: none;
             pointer-events: none;
             z-index: 1000;
-        }
-        #coordinates {
-            position: fixed;
-            bottom: 10px;
-            left: 10px;
-            color: white;
-            display: none;
+            opacity: 0;
+            transition: opacity 0.5s;
+            font-family: 'Jebone', sans-serif;
         }
     </style>
 </head>
 <body>
     <div class="container">
-           <!--put your image information here-->
-        <img src="images/02.bmp" alt="the light and the mountain" class="image" id="explorationImage">
-        <div class="hotspot" style="top: 270px; left: 182px; width: 100px; height: 100px;" data-tooltip="Wow... The light and the mountain... Would you look at that.." data-link="exploration03.html"></div>
+        <img src="images/02.bmp" alt="the mountains" class="image" id="explorationImage">
+        <div class="hotspot" style="top: 270px; left: 182px; width: 100px; height: 100px;" data-tooltip="Wow... The light and the mountain.." data-link="exploration03.html"></div>
         <div class="tooltip" id="tooltip"></div>
     </div>
-    <div id="coordinates"></div>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const hotspots = document.querySelectorAll('.hotspot');
             const tooltip = document.getElementById('tooltip');
-            const coordinates = document.getElementById('coordinates');
             const image = document.getElementById('explorationImage');
+
+            function typeWriter(text, element, callback) {
+                let i = 0;
+                element.innerHTML = '';
+                function type() {
+                    if (i < text.length) {
+                        element.innerHTML += text.charAt(i);
+                        i++;
+                        setTimeout(type, 50);
+                    } else if (callback) {
+                        callback();
+                    }
+                }
+                type();
+            }
 
             hotspots.forEach(hotspot => {
                 hotspot.addEventListener('mouseover', (e) => {
                     const tooltipText = e.target.getAttribute('data-tooltip');
                     if (tooltipText) {
-                        tooltip.innerText = tooltipText;
                         tooltip.style.display = 'block';
+                        tooltip.style.opacity = 1;
+                        typeWriter(tooltipText, tooltip);
                     }
                 });
 
@@ -77,7 +90,10 @@
                 });
 
                 hotspot.addEventListener('mouseout', () => {
-                    tooltip.style.display = 'none';
+                    tooltip.style.opacity = 0;
+                    setTimeout(() => {
+                        tooltip.style.display = 'none';
+                    }, 500);
                 });
 
                 hotspot.addEventListener('click', () => {
@@ -87,42 +103,6 @@
                     }
                 });
             });
-
-            let debugMode = false;
-
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'x') {
-                    debugMode = true;
-                    coordinates.style.display = 'block';
-                }
-            });
-
-            document.addEventListener('keyup', (e) => {
-                if (e.key === 'x') {
-                    debugMode = false;
-                    coordinates.style.display = 'none';
-                }
-            });
-
-            image.addEventListener('mousemove', (e) => {
-                if (debugMode) {
-                    const rect = image.getBoundingClientRect();
-                    const x = Math.round((e.clientX - rect.left) / rect.width * 640);
-                    const y = Math.round((e.clientY - rect.top) / rect.height * 480);
-                    coordinates.innerText = `X: ${x}, Y: ${y}`;
-                }
-            });
-
-
-            if (document.documentElement.requestFullscreen) {
-                document.documentElement.requestFullscreen();
-            } else if (document.documentElement.mozRequestFullScreen) { 
-                document.documentElement.mozRequestFullScreen();
-            } else if (document.documentElement.webkitRequestFullscreen) { 
-                document.documentElement.webkitRequestFullscreen();
-            } else if (document.documentElement.msRequestFullscreen) { 
-                document.documentElement.msRequestFullscreen();
-            }
         });
     </script>
 </body>
