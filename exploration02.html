@@ -31,7 +31,7 @@
             cursor: pointer;
         }
         .hotspot.debug {
-            background-color: rgba(255, 0, 0, 0.5); /* Red with transparency */
+            background-color: rgba(255, 0, 0, 0.5); 
             border: 1px solid red;
         }
         .tooltip {
@@ -131,7 +131,7 @@
                     debugMode = true;
                     coordinates.style.display = 'block';
                     hotspots.forEach(hotspot => {
-                        hotspot.classList.add('debug'); // Show hotspots in debug mode
+                        hotspot.classList.add('debug'); 
                     });
                 }
             });
@@ -141,7 +141,7 @@
                     debugMode = false;
                     coordinates.style.display = 'none';
                     hotspots.forEach(hotspot => {
-                        hotspot.classList.remove('debug'); // Hide hotspots when debug mode is off
+                        hotspot.classList.remove('debug'); 
                     });
                 }
             });
