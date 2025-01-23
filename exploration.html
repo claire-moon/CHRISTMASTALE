@@ -30,6 +30,10 @@
             position: absolute;
             cursor: pointer;
         }
+        .hotspot.debug {
+            background-color: rgba(255, 0, 0, 0.5); /* Red with transparency */
+            border: 1px solid red;
+        }
         .tooltip {
             position: absolute;
             background-color: rgba(0, 0, 0, 0.7);
@@ -67,17 +71,22 @@
             const tooltip = document.getElementById('tooltip');
             const coordinates = document.getElementById('coordinates');
             const image = document.getElementById('explorationImage');
+            let typing = false;
 
             function typeWriter(text, element, callback) {
                 let i = 0;
                 element.innerHTML = '';
+                typing = true;
                 function type() {
                     if (i < text.length) {
                         element.innerHTML += text.charAt(i);
                         i++;
                         setTimeout(type, 50);
-                    } else if (callback) {
-                        callback();
+                    } else {
+                        typing = false;
+                        if (callback) {
+                            callback();
+                        }
                     }
                 }
                 type();
@@ -85,11 +94,13 @@
 
             hotspots.forEach(hotspot => {
                 hotspot.addEventListener('mouseover', (e) => {
-                    const tooltipText = e.target.getAttribute('data-tooltip');
-                    if (tooltipText) {
-                        tooltip.style.display = 'block';
-                        tooltip.style.opacity = 1;
-                        typeWriter(tooltipText, tooltip);
+                    if (!typing) {
+                        const tooltipText = e.target.getAttribute('data-tooltip');
+                        if (tooltipText) {
+                            tooltip.style.display = 'block';
+                            tooltip.style.opacity = 1;
+                            typeWriter(tooltipText, tooltip);
+                        }
                     }
                 });
 
@@ -120,6 +131,9 @@
                 if (e.key === 'x') {
                     debugMode = true;
                     coordinates.style.display = 'block';
+                    hotspots.forEach(hotspot => {
+                        hotspot.classList.add('debug'); // Show hotspots in debug mode
+                    });
                 }
             });
 
@@ -127,6 +141,9 @@
                 if (e.key === 'x') {
                     debugMode = false;
                     coordinates.style.display = 'none';
+                    hotspots.forEach(hotspot => {
+                        hotspot.classList.remove('debug'); // Hide hotspots when debug mode is off
+                    });
                 }
             });
 
