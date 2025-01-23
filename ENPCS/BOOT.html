@@ -6,7 +6,7 @@
     <title>BOOT</title>
     <style>
         body {
-            background-color: #191970; /* Midnight blue */
+            background-color: #701919; /* Midnight blue */
             color: #fff; /* White */
             font-family: monospace;
             margin: 0;
@@ -17,16 +17,39 @@
             height: 100vh;
             overflow: hidden;
             position: relative;
+            flex-direction: column; /* Stack elements vertically */
+        }
+        #candy-canes-container {
+            position: absolute;
+            top: 20px; /* Add padding from the top */
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+        #candy-canes {
+            text-align: center;
+            transform: scale(0.5); /* Scale down the candy canes */
+        }
+        #logo-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            margin-bottom: 20px; /* Add margin to separate from loading bar */
         }
         #animation {
             white-space: pre;
             text-align: center;
+            transform: scale(1.2); /* Scale up the logo */
+        }
+        #loading-bar-container {
+            width: 80%;
+            flex-shrink: 0;
         }
         #loading-bar {
-            width: 80%;
+            width: 100%;
             height: 30px;
             border: 2px solid #fff; /* White */
-            margin-top: 20px;
             position: relative;
         }
         #loading-progress {
@@ -53,9 +76,34 @@
     </style>
 </head>
 <body>
-    <div id="animation"></div>
-    <div id="loading-bar">
-        <div id="loading-progress"></div>
+    <div id="candy-canes-container">
+        <div id="candy-canes">
+            <pre>
+                ⠀⠀⠀⠀⠀⠀⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⠀⠀⠀⠀⠀⠀
+                ⠀⠀⠀⠀⢻⣿⠏⠀⣠⣦⡀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⣄⠀⠹⣿⡟⠀⠀⠀⠀
+                ⠀⣰⣦⠀⠀⠀⠀⠀⠛⠛⠓⠀⠀⠀⠀⠀⠀⠀⠀⠚⠛⠛⠀⠀⠀⠀⠀⣴⣆⠀
+                ⠀⢿⣿⠇⠀⠀⠀⠀⠀⢲⣶⣶⡀⠀⠀⠀⠀⢀⣶⣶⡖⠀⠀⠀⠀⠀⠸⣿⡿⠀
+                ⠀⠘⠁⢀⣤⠀⠀⠀⠀⠀⠉⠉⠁⠀⠀⠀⠀⠈⠉⠉⠀⠀⠀⠀⠀⣤⡀⠈⠃⠀
+                ⠀⠀⠀⠿⠿⠀⠀⠀⠀⠀⠀⠻⠿⠷⠄⠠⠾⠿⠟⠀⠀⠀⠀⠀⠀⠿⠿⠀⠀⠀
+                ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⣀⡀⠀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+                ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠛⠛⠛⠀⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+                ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⡀⢤⣤⣤⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+                ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠁⠀⠉⠉⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+                ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠠⠾⠿⠟⠀⠀⠻⠿⠷⠄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+                ⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⣀⡀⠀⠀⠀⠀⢀⣀⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+                ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠿⠿⠟⠀⠀⠀⠀⠀⠀⠻⠿⠿⠀⠀⠀⠀⠀⠀⠀⠀⠀
+                ⠀⠀⠀⠀⠀⠀⠀⠀⣶⣶⡆⠀⠀⠀⠀⠀⠀⠀⠀⢰⣶⣶⠀⠀⠀⠀⠀⠀⠀⠀
+                ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠀⠀⠀⠀⠀⠀⠀⠀⠀
+            </pre>
+        </div>
+    </div>
+    <div id="logo-container">
+        <div id="animation"></div>
+    </div>
+    <div id="loading-bar-container">
+        <div id="loading-bar">
+            <div id="loading-progress"></div>
+        </div>
     </div>
     <div id="command-preview"></div>
     <script>

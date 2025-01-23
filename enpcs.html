@@ -10,7 +10,7 @@
             src: url('fonts/alagard.ttf') format('truetype');
         }
         body {
-            background-color: #191970; 
+            background-color: #701919; 
             color: #fff; 
             font-family: 'Alagard', monospace;
             margin: 0;
@@ -33,7 +33,7 @@
             position: fixed;
             bottom: 0;
             left: 0;
-            background-color: #191970; 
+            background-color: #701919; 
         }
         #input {
             width: 100%;
@@ -123,9 +123,9 @@
         });
 
         window.addEventListener('load', () => {
-            if (!localStorage.getItem('bootRun')) {
+            if (!sessionStorage.getItem('bootRun')) {
                 printToTerminal('BOOT sequence initiated');
-                localStorage.setItem('bootRun', 'true');
+                sessionStorage.setItem('bootRun', 'true');
                 window.location.href = 'ENPCS/BOOT.html';
             } else {
                 printToTerminal('BOOT sequence has already been run.');
