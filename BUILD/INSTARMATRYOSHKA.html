@@ -142,6 +142,17 @@ span.pulse-in {
   animation: fadeToBlack 4s forwards;
 }
 
+@keyframes blurIn {
+    from {
+        filter: blur(10px);
+        opacity: 0;
+    }
+    to {
+        filter: blur(0);
+        opacity: 1;
+    }
+}
+
 /* IMAGE STYLES */
 
 /* styles for all images by default */
@@ -155,25 +166,12 @@ img {
 */
 img.full-width {
     display: block;
+    width: 100%;
     margin-right: auto;
     margin-left: auto;
-    width: 100%;
-    animation: blurIn 1.5s ease-out forwards;
-    filter: blur(0); 
-    background: #000; 
-    object-fit: cover; 
 }
 
-@keyframes blurIn {
-    from {
-        filter: blur(10px);
-        opacity: 0;
-    }
-    to {
-        filter: blur(0);
-        opacity: 1;
-    }
-}
+
 
 
 
@@ -224,7 +222,8 @@ img.full-width {
 
 //claire here, commenting this out for right now so that there isnt any music that plays in this build cuz i havent timed any new music to the new shit yet
 
-//btw use "//" to do comment code if u wanna leave comments :D</script><tw-passagedata pid="1" name="intro0" tags="" position="400,200" size="100,100">{(set: _transition to &quot;fade&quot;) 
+//btw use "//" to do comment code if u wanna leave comments :D
+</script><tw-passagedata pid="1" name="intro0" tags="" position="400,200" size="100,100">{(set: _transition to &quot;fade&quot;) 
 (set: $jollyPoints to 0)
 (set: $instarLevel to 1)
 (set: $giftLied to 0)
@@ -237,7 +236,7 @@ img.full-width {
 (set: $snowDoubt to 0)}&lt;img src=&quot;https://github.com/claire-moon/CHRISTMASTALE/blob/main/transfer/06.png?raw=true&quot; class=&quot;full-width&quot;&gt;
 [[It’s night.-&gt;intro1]]
 
-&lt;!--  &lt;img src=&quot;https://github.com/claire-moon/CHRISTMASTALE/blob/main/transfer/09.png?raw=true&quot; width=&quot;600&quot; height=&quot;1000&quot;&gt; example for img --&gt;</tw-passagedata><tw-passagedata pid="2" name="intro1" tags="" position="400,400" size="100,100">&lt;img src=&quot;https://github.com/claire-moon/CHRISTMASTALE/blob/main/transfer/08.png?raw=true&quot; class=&quot;full-width&quot;&gt;
+&lt;!--  &lt;img src=&quot;https://github.com/claire-moon/CHRISTMASTALE/blob/main/transfer/09.png?raw=true&quot; width=&quot;600&quot; height=&quot;1000&quot;&gt; example for img --&gt;</tw-passagedata><tw-passagedata pid="2" name="intro1" tags="" position="400,400" size="100,100">{&lt;img src=&quot;https://github.com/claire-moon/CHRISTMASTALE/blob/main/transfer/09.png?raw=true&quot; style=&quot;display: none;&quot;&gt;}&lt;img src=&quot;https://github.com/claire-moon/CHRISTMASTALE/blob/main/transfer/08.png?raw=true&quot; class=&quot;full-width&quot;&gt;
 
 You&#39;ve been sitting in the back of a bumpy taxi ride for sometime. The driver is muttering some obscenities about something that really pissed him off earlier. You&#39;re looking out the window. All of the stoplights scroll by, reds bleeding into the greens. Spiny gray buildings loom behind them, all sliding by in a neat little row, blocks and blocks of them stretching down the seemingly endless avenue, disappearing behind the heavy sheets of snowfall, each flake spiraling down in its own little wave, all glowing in the howling wind and burning neon.
 
@@ -307,7 +306,9 @@ As you shit your pants in fear, one final bump in the road actually connects you
 
 &quot;Oh, FUCK ME!&quot; the driver half shouts, too defeated and maybe even too expecting to give a full shout. 
 
-The car lights dim as he pulls over the wounded beast to the side of the road. The flurries of snow outside have become torrential, pouring down into thick layers across the parkway, a sea of blinking red lights and beeping cars stretching out beyond the dashboard window. If a jazz band of 40 something players were to ever all smoke a new experimental kind of Super Crack; they would probably make something at least close to this kind of cacophony. The leader of the band: &#39;Mister Maestro&#39;, gets frustrated at the bands lack of cohesion, and eventually starts a fist fight with all of them. He beats one of them to death with a trombone before getting decapitated by a flying cymbal.
+The car lights dim as he pulls over the wounded beast to the side of the road. The flurries of snow outside have become torrential, pouring down into thick layers across the parkway, a sea of blinking red lights and beeping cars stretching out beyond the dashboard window. If a jazz band of 40 something players were to ever all smoke a new experimental kind of Super Crack; they would probably make something at least close to this kind of cacophony. The leader of the band: &#39;Mister Maestro&#39;, gets frustrated at the bands lack of cohesion, and eventually starts a fist fight with all of them. He beats one of them to death with a trombone before getting (link:&quot;decapitated by a flying cymbal.&quot;)[(show:?cymbal)]|cymbal)[decapitated by a flying cymbal.
+
+&lt;img src=&quot;https://github.com/claire-moon/CHRISTMASTALE/blob/main/transfer/14.png?raw=true&quot; class=&quot;full-width&quot;&gt;
 
 The driver is too busy shouting obscenities into all of that chaos to really notice when you slip out of the side door. You don&#39;t need to check that infernal buzzing phone to know you only have an hour to make it to that flight, and you are not about to miss that. You&#39;re not even really sure if the plane could even make it out in this kind of weather, but if you are not in that seat, on that runway, with a drink in your hand by the time that door closes, this would only be the 4th Shittiest Christmas Of All Time, and you&#39;re not sure if you have the heart to handle even that.
 
@@ -319,7 +320,7 @@ The driver is too busy shouting obscenities into all of that chaos to really not
         setTimeout(function() {
             document.querySelector(&#39;tw-story&#39;).classList.remove(&#39;fade-to-white&#39;);
         }, 4000); // 4000ms = 4s (match the animation duration)
-    &lt;/script&gt;(go-to: &quot;snow1&quot;)]]
+    &lt;/script&gt;(go-to: &quot;snow1&quot;)]]]
 
 
 </tw-passagedata><tw-passagedata pid="8" name="intro4b" tags="" position="300,1000" size="100,100">You&#39;ve got to admit, that one really hurt to send. Even //you// felt that one. If something got through that 10-foot shell of ice around your heart, that&#39;s probably a bad fucking sign. Come on. You could have spent $1000 on her, and you know she&#39;s worth more than that. She has put up with at least $50,000,000 of damages in regards to you. You spent all of 30 minutes getting that &quot;gift&quot;, and she probably built you a fucking Gingerbread Cathedral with her two bare hands. The sheer amount of people who would appreciate her more stabs the back of your brain over, and over, and over, that number just getting bigger, and BIGGER. God. Who cares, if you &quot;don&#39;t get it&quot;? You couldn&#39;t let yourself let her indulge in happiness, could you?
@@ -395,11 +396,19 @@ The driver is too busy shouting obscenities into all of that chaos to really not
       color: black
   }
 &lt;/style&gt;
-}You fumble with the rusty handle for a moment, nearly forgetting and then snatching that twinkling sack of failure(if: $giftLied is 1)[ and empty promises] before disappearing (text-color: black)[(link: &quot;out into the avalanche.&quot;)[(show: ?avalanche)]]|avalanche)[out into the avalanche.
+}&lt;img src=&quot;https://github.com/claire-moon/CHRISTMASTALE/blob/main/transfer/05.png?raw=true&quot; class=&quot;full-width&quot;&gt;
 
-As the car door slams behind you, a howling gust of wind tears at your eardrums, nearly slamming you supine onto the iced over pavement. A sickle of cold bites at your eyelids, as you push onward against the screaming wind. The crumbling snow beneath you swallows your boots whole, while you shamble past the honking conga line of stand-still automobiles.. You glance down to your wristwatch, fruitlessly. The conditions outside make even close proximity line-of-sight a near impossibility. Shit. What time is it? 8? //9?// For all you know, it’s past midnight. Great. //Merry Christmas, Ivy!// Here’s to another abject disaster of a holiday. You can already see it now: Holly, sheepishly sitting across from her father, mother, brother, and then, //Bradley//, sitting right there in //your// spot. Sitting there with his stupid flannel shirt wrapped around his chiseled waist, and his dumb, big, sexy arms poking out of his snug tank top. He’s probably stuffing her turkey with his veiny hands RIGHT NOW. “Don’t forget the gravy..”, Holly giggles at him. FUCK. You don’t mean to, but you kick the snow in a fit, as if that would do anything to stop the inevitable decay of your wretched soul. The snow, in response, does nothing. You instead fall over, face first into the white, a freezing pool of frost overtaking your senses. The signal to pull yourself up is sent to your limbs, but for whatever reason, they give no reply. 
+You fumble with the rusty handle for a moment, nearly forgetting and then snatching that twinkling sack of failure(if: $giftLied is 1)[ and empty promises] before disappearing (text-color: black)[(link: &quot;out into the avalanche.&quot;)[(show: ?avalanche)]]|avalanche)[out into the avalanche.
+
+As the car door slams behind you, a howling gust of wind tears at your eardrums, nearly slamming you supine onto the iced over pavement. A sickle of cold bites at your eyelids, as you push onward against the screaming wind. The crumbling snow beneath you swallows your boots whole, while you shamble past the honking conga line of stand-still automobiles.. You glance down to your wristwatch, fruitlessly. The conditions outside make even close proximity line-of-sight a near impossibility. Shit. What time is it? 8? //9?// For all you know, it’s past midnight. Great. //Merry Christmas, Ivy!// Here’s to another abject disaster of a holiday. You can already see it now: Holly, sheepishly sitting across from her father, mother, brother, and then, //Bradley//, sitting right there in //your// spot. Sitting there with his stupid flannel shirt wrapped around his chiseled waist, and his dumb, big, sexy arms poking out of his snug tank top. He’s probably stuffing her turkey with his veiny hands RIGHT NOW. “Don’t forget the gravy..”, Holly giggles at him.
+
+&lt;img src=&quot;https://github.com/claire-moon/CHRISTMASTALE/blob/main/transfer/02.png?raw=true&quot; class=&quot;full-width&quot;&gt;
+
+FUCK. You don’t mean to, but you kick the snow in a fit, as if that would do anything to stop the inevitable decay of your wretched soul. The snow, in response, does nothing. You instead fall over, face first into the white, a freezing pool of frost overtaking your senses. The signal to pull yourself up is sent to your limbs, but for whatever reason, they give no reply. 
 
 Instead, you lay there, motionless. A blanket of snow begins to pile up on your back, gently pushing you further and further down into the ground. This is the most comfortable you’ve felt all year. Just you, the Earth, and the snowfall from above. Despite the all-around piercing numbness, you close your eyes, your lashes making little angels in the fluffy powder around your cheeks. A fireplace crackles somewhere. Bottle tops popping. Someone laughs, and little teardrop icicles form  (text-color: black)[(link: &quot;beneath your eyes.&quot;)[(show: ?youreyes)]]]|youreyes)[beneath your eyes.
+
+&lt;img src=&quot;https://github.com/claire-moon/CHRISTMASTALE/blob/main/transfer/01.png?raw=true&quot; class=&quot;full-width&quot;&gt;
 
 //‘’*BEEP! BEEP!*’’ “Hey, asshole! You gotta fucking pay!”//, someone screams at you from behind, barely audible beneath the blasting gales.
 
@@ -412,7 +421,45 @@ Step by step, you push each leg down firmly into the snow in front of you. Left,
 [[You turn back.-&gt;snow1a]]]]
 </tw-passagedata><tw-passagedata pid="12" name="title" tags="" position="400,0" size="100,100">&lt;span style=&quot;font-family: &#39;Cristone&#39;, serif; font-size: 72px; color: white; inline-block; nowrap;&quot;&gt;&#39;&#39;(t8n-time:5s)&lt;br&gt;
 [[//INSTAR MATRYOSHKA//-&gt;intro0]]&#39;&#39;&lt;/span&gt;&lt;/br&gt;
-
+{&lt;!-- Preload all images --&gt;
+&lt;img src=&quot;https://github.com/claire-moon/CHRISTMASTALE/blob/main/transfer/01.png?raw=true&quot; style=&quot;display: none;&quot;&gt;
+&lt;img src=&quot;https://github.com/claire-moon/CHRISTMASTALE/blob/main/transfer/02.png?raw=true&quot; style=&quot;display: none;&quot;&gt;
+&lt;img src=&quot;https://github.com/claire-moon/CHRISTMASTALE/blob/main/transfer/03.png?raw=true&quot; style=&quot;display: none;&quot;&gt;
+&lt;img src=&quot;https://github.com/claire-moon/CHRISTMASTALE/blob/main/transfer/04.png?raw=true&quot; style=&quot;display: none;&quot;&gt;
+&lt;img src=&quot;https://github.com/claire-moon/CHRISTMASTALE/blob/main/transfer/05.png?raw=true&quot; style=&quot;display: none;&quot;&gt;
+&lt;img src=&quot;https://github.com/claire-moon/CHRISTMASTALE/blob/main/transfer/06.png?raw=true&quot; style=&quot;display: none;&quot;&gt;
+&lt;img src=&quot;https://github.com/claire-moon/CHRISTMASTALE/blob/main/transfer/07.png?raw=true&quot; style=&quot;display: none;&quot;&gt;
+&lt;img src=&quot;https://github.com/claire-moon/CHRISTMASTALE/blob/main/transfer/08.png?raw=true&quot; style=&quot;display: none;&quot;&gt;
+&lt;img src=&quot;https://github.com/claire-moon/CHRISTMASTALE/blob/main/transfer/09.png?raw=true&quot; style=&quot;display: none;&quot;&gt;
+&lt;img src=&quot;https://github.com/claire-moon/CHRISTMASTALE/blob/main/transfer/10.png?raw=true&quot; style=&quot;display: none;&quot;&gt;
+&lt;img src=&quot;https://github.com/claire-moon/CHRISTMASTALE/blob/main/transfer/11.png?raw=true&quot; style=&quot;display: none;&quot;&gt;
+&lt;img src=&quot;https://github.com/claire-moon/CHRISTMASTALE/blob/main/transfer/12.png?raw=true&quot; style=&quot;display: none;&quot;&gt;
+&lt;img src=&quot;https://github.com/claire-moon/CHRISTMASTALE/blob/main/transfer/13.png?raw=true&quot; style=&quot;display: none;&quot;&gt;
+&lt;img src=&quot;https://github.com/claire-moon/CHRISTMASTALE/blob/main/transfer/14.png?raw=true&quot; style=&quot;display: none;&quot;&gt;
+&lt;img src=&quot;https://github.com/claire-moon/CHRISTMASTALE/blob/main/transfer/15.png?raw=true&quot; style=&quot;display: none;&quot;&gt;
+&lt;img src=&quot;https://github.com/claire-moon/CHRISTMASTALE/blob/main/transfer/16.png?raw=true&quot; style=&quot;display: none;&quot;&gt;
+&lt;img src=&quot;https://github.com/claire-moon/CHRISTMASTALE/blob/main/transfer/17.png?raw=true&quot; style=&quot;display: none;&quot;&gt;
+&lt;img src=&quot;https://github.com/claire-moon/CHRISTMASTALE/blob/main/transfer/18.png?raw=true&quot; style=&quot;display: none;&quot;&gt;
+&lt;img src=&quot;https://github.com/claire-moon/CHRISTMASTALE/blob/main/transfer/19.png?raw=true&quot; style=&quot;display: none;&quot;&gt;
+&lt;img src=&quot;https://github.com/claire-moon/CHRISTMASTALE/blob/main/transfer/20.png?raw=true&quot; style=&quot;display: none;&quot;&gt;
+&lt;img src=&quot;https://github.com/claire-moon/CHRISTMASTALE/blob/main/transfer/21.png?raw=true&quot; style=&quot;display: none;&quot;&gt;
+&lt;img src=&quot;https://github.com/claire-moon/CHRISTMASTALE/blob/main/transfer/22.png?raw=true&quot; style=&quot;display: none;&quot;&gt;
+&lt;img src=&quot;https://github.com/claire-moon/CHRISTMASTALE/blob/main/transfer/23.png?raw=true&quot; style=&quot;display: none;&quot;&gt;
+&lt;img src=&quot;https://github.com/claire-moon/CHRISTMASTALE/blob/main/transfer/24.png?raw=true&quot; style=&quot;display: none;&quot;&gt;
+&lt;img src=&quot;https://github.com/claire-moon/CHRISTMASTALE/blob/main/transfer/25.png?raw=true&quot; style=&quot;display: none;&quot;&gt;
+&lt;img src=&quot;https://github.com/claire-moon/CHRISTMASTALE/blob/main/transfer/26.png?raw=true&quot; style=&quot;display: none;&quot;&gt;
+&lt;img src=&quot;https://github.com/claire-moon/CHRISTMASTALE/blob/main/transfer/27.png?raw=true&quot; style=&quot;display: none;&quot;&gt;
+&lt;img src=&quot;https://github.com/claire-moon/CHRISTMASTALE/blob/main/transfer/28.png?raw=true&quot; style=&quot;display: none;&quot;&gt;
+&lt;img src=&quot;https://github.com/claire-moon/CHRISTMASTALE/blob/main/transfer/29.png?raw=true&quot; style=&quot;display: none;&quot;&gt;
+&lt;img src=&quot;https://github.com/claire-moon/CHRISTMASTALE/blob/main/transfer/30.png?raw=true&quot; style=&quot;display: none;&quot;&gt;
+&lt;img src=&quot;https://github.com/claire-moon/CHRISTMASTALE/blob/main/transfer/31.png?raw=true&quot; style=&quot;display: none;&quot;&gt;
+&lt;img src=&quot;https://github.com/claire-moon/CHRISTMASTALE/blob/main/transfer/32.png?raw=true&quot; style=&quot;display: none;&quot;&gt;
+&lt;img src=&quot;https://github.com/claire-moon/CHRISTMASTALE/blob/main/transfer/33.png?raw=true&quot; style=&quot;display: none;&quot;&gt;
+&lt;img src=&quot;https://github.com/claire-moon/CHRISTMASTALE/blob/main/transfer/34.png?raw=true&quot; style=&quot;display: none;&quot;&gt;
+&lt;img src=&quot;https://github.com/claire-moon/CHRISTMASTALE/blob/main/transfer/35.png?raw=true&quot; style=&quot;display: none;&quot;&gt;
+&lt;img src=&quot;https://github.com/claire-moon/CHRISTMASTALE/blob/main/transfer/36.png?raw=true&quot; style=&quot;display: none;&quot;&gt;
+&lt;img src=&quot;https://github.com/claire-moon/CHRISTMASTALE/blob/main/transfer/37.png?raw=true&quot; style=&quot;display: none;&quot;&gt;
+&lt;img src=&quot;https://github.com/claire-moon/CHRISTMASTALE/blob/main/transfer/38.png?raw=true&quot; style=&quot;display: none;&quot;&gt;}
 
 
 
